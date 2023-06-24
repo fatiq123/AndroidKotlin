@@ -4,27 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/design_default_color_primary"
+    tools:context=".SecondActivity">
 
     <TextView
-        android:id="@+id/tvCurrentActivity"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Activity"
+        android:layout_marginTop="152dp"
+        android:text="You are in Second Activity"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/black"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnNextActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next Activity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrentActivity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

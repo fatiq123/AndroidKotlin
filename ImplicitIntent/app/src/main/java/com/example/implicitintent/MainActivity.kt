@@ -13,9 +13,11 @@ class MainActivity : AppCompatActivity() {
 
         val btn: Button = findViewById(R.id.btnImplicitIntent)
 
+
+        // implicit intent
         btn.setOnClickListener {
             intent = Intent(Intent.ACTION_VIEW)
-            intent.setData(Uri.parse("https://www.google.com"))
+            intent.data = Uri.parse("https://www.google.com")
             startActivity(intent)
         }
     }

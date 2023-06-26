@@ -26,7 +26,7 @@
     <ImageView
         android:id="@+id/ivAppLogo"
         android:layout_width="200dp"
-        android:layout_height="0dp"
+        android:layout_height="200dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/music_logo"
         app:layout_constraintBottom_toTopOf="@+id/tvSongTitle"
@@ -49,8 +49,8 @@
 
     <Button
         android:id="@+id/btnForward"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="401dp"
         android:layout_marginEnd="29dp"
         android:layout_marginBottom="203dp"
@@ -62,8 +62,8 @@
 
     <Button
         android:id="@+id/btnPause"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="214dp"
         android:layout_marginTop="401dp"
         android:layout_marginEnd="48dp"
@@ -75,9 +75,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnResume"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/btnPlay"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="106dp"
         android:layout_marginTop="401dp"
         android:layout_marginEnd="156dp"
@@ -90,8 +90,8 @@
 
     <Button
         android:id="@+id/btnBackward"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="401dp"
         android:layout_marginEnd="242dp"
@@ -110,12 +110,13 @@
         android:layout_marginTop="76dp"
         android:text="00:00"
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/btnResume"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPause" />
 
     <SeekBar
         android:id="@+id/sbProgress"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="49dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -29,9 +29,9 @@
         android:id="@+id/tvWins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="12dp"
-        android:text="Total WIns"
+        android:text="Total Wins"
         app:layout_constraintStart_toEndOf="@+id/ivCountryImage"
         app:layout_constraintTop_toBottomOf="@+id/tvCountryName" />
 

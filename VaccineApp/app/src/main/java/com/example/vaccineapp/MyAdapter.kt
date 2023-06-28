@@ -21,10 +21,12 @@ class MyAdapter(private val vaccinesList: ArrayList<VaccineModel>) :
             image = itemView.findViewById(R.id.ivVaccineImage)
             title = itemView.findViewById(R.id.tvVaccineTitle)
 
-            itemView.setOnClickListener(){
-                Toast.makeText(itemView.context,
-                "You Choose: ${vaccinesList[adapterPosition].name}",
-                Toast.LENGTH_SHORT).show()
+            itemView.setOnClickListener() {
+                Toast.makeText(
+                    itemView.context,
+                    "You Choose: ${vaccinesList[adapterPosition].name}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }

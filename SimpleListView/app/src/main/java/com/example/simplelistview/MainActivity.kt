@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 1. Adapter View: ListView
+        // 1. Adapter View: ListView (is this case)
         val listView: ListView = findViewById(R.id.listView)
 
         // 2. Data Source: Array of Strings

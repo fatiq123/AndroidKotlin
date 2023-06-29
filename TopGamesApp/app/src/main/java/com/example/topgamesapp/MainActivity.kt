@@ -63,6 +63,6 @@ class MainActivity : AppCompatActivity() {
 
         // 3. Adapter   to connect AdapterView and Data Source
         val adapter = GameAdapter(gamesList)
-        recyclerView.adapter = adapter
+        recyclerView.adapter = adapter      // this line is very important to connect the adapter to view
     }
 }

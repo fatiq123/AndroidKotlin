@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             val country7 = CountryModel(
                 // i myself provide them as a default parameters like name = "Brazil i can also pass as "Brazil".
                 name = "Saudi Arabia",
-                cupWins = "Wins: 0",
+                cupWins = "Wins: -1",
                 flagImg = R.drawable.saudiarabia
             )
 

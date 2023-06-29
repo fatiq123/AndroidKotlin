@@ -14,8 +14,8 @@ class MyAdapter(private val vaccinesList: ArrayList<VaccineModel>) :
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        lateinit var image: ImageView
-        lateinit var title: TextView
+        var image: ImageView
+        var title: TextView
 
         init {
             image = itemView.findViewById(R.id.ivVaccineImage)

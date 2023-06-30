@@ -2,7 +2,7 @@ package com.example.viewmodelapp
 
 import androidx.lifecycle.ViewModel
 
-class MainActivityViewModel : ViewModel() {
+class MainActivityViewModel(startingNumber: Int) : ViewModel() {
 
     private var counter = 0
 

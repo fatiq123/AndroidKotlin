@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // save function
     private fun saveNameInSharedPreference(enteredName: String) {
 
         // initializing the shared preference
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             ?.apply()
     }
 
+    // load function
     private fun displaySavedName(){
         val sharedPreferences: SharedPreferences = getSharedPreferences("EXTRA_NAME", MODE_PRIVATE)
 

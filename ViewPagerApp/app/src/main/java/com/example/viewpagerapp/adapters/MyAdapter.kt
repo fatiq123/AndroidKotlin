@@ -7,7 +7,7 @@ import com.example.viewpagerapp.fragments.FragmentThree
 import com.example.viewpagerapp.fragments.FragmentTwo
 import com.example.viewpagerapp.MainActivity
 
-class MyAdapter(mainActivity: MainActivity): FragmentStateAdapter(mainActivity) {
+class MyAdapter(mainActivity: MainActivity) : FragmentStateAdapter(mainActivity) {
 
     private val fragmentSize = 3
 
@@ -17,13 +17,15 @@ class MyAdapter(mainActivity: MainActivity): FragmentStateAdapter(mainActivity) 
 
     override fun createFragment(position: Int): Fragment {
 
-        when(position){
+        when (position) {
             0 -> {
                 return FragmentOne()
             }
+
             1 -> {
                 return FragmentTwo()
             }
+
             2 -> {
                 return FragmentThree()
             }

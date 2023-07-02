@@ -12,6 +12,10 @@ class SecondActivity : AppCompatActivity() {
         val bundle: Bundle? = intent.extras
         val age = bundle?.get("age")
 
-        Toast.makeText(this, "your age: $age", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            this,
+            "your age: $age",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }

@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         val btn: Button = findViewById(R.id.btnImplicitIntent)
 
 
-        // implicit intent
+        // implicit intent  to go directly to google if user press the button
         btn.setOnClickListener {
             intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse("https://www.google.com")

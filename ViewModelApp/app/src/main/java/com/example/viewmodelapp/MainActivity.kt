@@ -11,7 +11,7 @@ import com.example.viewmodelapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-//    private var counter = 0
+    //    private var counter = 0
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var binding: ActivityMainBinding
     private lateinit var factory: MainActivityViewModelFactory
@@ -29,7 +29,10 @@ class MainActivity : AppCompatActivity() {
 
         // view model
 //        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
-        viewModel = ViewModelProvider(this,factory)[MainActivityViewModel::class.java]      // to start the count from 100
+        viewModel = ViewModelProvider(
+            this,
+            factory
+        )[MainActivityViewModel::class.java]      // to start the count from 100
 
 
         binding.textView.text = viewModel.getCurrentCount().toString()

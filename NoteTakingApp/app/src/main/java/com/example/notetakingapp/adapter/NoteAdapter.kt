@@ -1,14 +1,18 @@
 package com.example.notetakingapp.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notetakingapp.R
 import com.example.notetakingapp.databinding.NoteLayoutBinding
+import com.example.notetakingapp.fragments.HomeFragmentDirections
 import com.example.notetakingapp.model.Note
+import java.util.*
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
@@ -46,8 +50,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 //        return NoteViewHolder(
 //            NoteLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 //        )
-
-
+        // we can use above code instead of this
         val inflater = LayoutInflater.from(parent.context)
         val binding: NoteLayoutBinding =
             DataBindingUtil.inflate(inflater, R.layout.note_layout, parent, false)
@@ -55,7 +58,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return differ.currentList.size
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
@@ -63,6 +66,26 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
         holder.itemBinding.tvNoteTitle.text = currentNote.noteTitle
         holder.itemBinding.tvNoteBody.text = currentNote.noteBody
+
+
+        // to display color in note
+        val random = Random()
+        val color = Color.argb(
+            255,
+            random.nextInt(256),
+            random.nextInt(256),
+            random.nextInt(256)
+        )
+
+
+        holder.itemBinding.ibColor.setBackgroundColor(color)    // assigns the color to the View background
+
+        holder.itemView.setOnClickListener {
+            val direction =
+                HomeFragmentDirections.actionHomeFragmentToUpdateNoteFragment(currentNote)
+
+            it.findNavController().navigate(direction)
+        }
     }
 
 

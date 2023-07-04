@@ -1,15 +1,19 @@
 package com.example.notetakingapp.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.notetakingapp.R
 import com.example.notetakingapp.databinding.NoteLayoutBinding
 import com.example.notetakingapp.model.Note
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
 
-    inner class NoteViewHolder(private val itemBinding: NoteLayoutBinding) :
+    inner class NoteViewHolder(val itemBinding: NoteLayoutBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
 
 
@@ -17,6 +21,8 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     // main purpose is to calculate updates for the recyclerView adapter and display things when we need to restart, delete, update
     // it will make operations faster and smooth
+    //The DiffUtil class is a utility provided by the Android Jetpack library. It is commonly used in conjunction
+    //with RecyclerView to efficiently update the contents of a list or grid when the underlying data changes.
     private val differCallBack = object : DiffUtil.ItemCallback<Note>() {
         override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
             return oldItem.id == newItem.id &&
@@ -30,9 +36,22 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     }
 
+    //Overall, using AsyncListDiffer simplifies the process of updating a RecyclerView's data set with
+    // diff calculations and automatically dispatching the necessary updates to the adapter.
+    // It helps to optimize the UI updates, keep the data in sync, and maintain a smooth user experience.
+    private val differ = AsyncListDiffer(this, differCallBack)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        TODO("Not yet implemented")
+//        return NoteViewHolder(
+//            NoteLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+//        )
+
+
+        val inflater = LayoutInflater.from(parent.context)
+        val binding: NoteLayoutBinding =
+            DataBindingUtil.inflate(inflater, R.layout.note_layout, parent, false)
+        return NoteViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -40,7 +59,10 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val currentNote = differ.currentList[position]
+
+        holder.itemBinding.tvNoteTitle.text = currentNote.noteTitle
+        holder.itemBinding.tvNoteBody.text = currentNote.noteBody
     }
 
 

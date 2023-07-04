@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".NewNoteFragment">
+        tools:context=".fragments.NewNoteFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <androidx.cardview.widget.CardView

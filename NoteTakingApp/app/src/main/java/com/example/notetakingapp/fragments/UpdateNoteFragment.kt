@@ -1,8 +1,12 @@
 package com.example.notetakingapp.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -10,9 +14,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.notetakingapp.MainActivity
 import com.example.notetakingapp.R
-import com.example.notetakingapp.adapter.NoteAdapter
-import com.example.notetakingapp.databinding.FragmentHomeBinding
-import com.example.notetakingapp.databinding.FragmentNewNoteBinding
 import com.example.notetakingapp.databinding.FragmentUpdateNoteBinding
 import com.example.notetakingapp.model.Note
 import com.example.notetakingapp.viewmodel.NoteViewModel
@@ -80,6 +81,45 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
         }
 
 
+    }
+
+
+    private fun deleteNote() {
+        AlertDialog.Builder(activity).apply {
+
+            setTitle("Delete Note")
+            setMessage("Do you want to delete this Note?")
+            setPositiveButton("Delete") {_,_ ->
+                notesViewModel.deleteNote(currentNote)
+
+                view?.findNavController()?.navigate(R.id.action_updateNoteFragment_to_homeFragment)
+            }
+            setNegativeButton("Cancel", null)
+        }.create().show()
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+        menu.clear()
+        inflater.inflate(R.menu.menu_update_note, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    // when user press on delete icon then it call the saveNote function and saves the record
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.menuDelete -> {
+                deleteNote()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDestroy() {
+        _binding = null
+        super.onDestroy()
     }
 
 }

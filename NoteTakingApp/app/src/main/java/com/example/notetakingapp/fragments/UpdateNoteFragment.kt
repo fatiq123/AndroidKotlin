@@ -67,8 +67,8 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
             val title = binding.etUpdateNoteTitle.text.toString().trim()
             val body = binding.etUpdateNoteBody.text.toString().trim()
 
-            if (title.isEmpty()){
-                val note = Note(currentNote.id,title,body)
+            if (title.isEmpty()) {
+                val note = Note(currentNote.id, title, body)
                 notesViewModel.updateNote(note = note)  // this will update the note
                 view.findNavController().navigate(R.id.action_updateNoteFragment_to_homeFragment)
             } else {
@@ -89,7 +89,7 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
 
             setTitle("Delete Note")
             setMessage("Do you want to delete this Note?")
-            setPositiveButton("Delete") {_,_ ->
+            setPositiveButton("Delete") { _, _ ->
                 notesViewModel.deleteNote(currentNote)
 
                 view?.findNavController()?.navigate(R.id.action_updateNoteFragment_to_homeFragment)

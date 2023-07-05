@@ -1,7 +1,6 @@
 package com.example.notetakingapp.fragments
 
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Note
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -9,7 +8,6 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -18,9 +16,6 @@ import com.example.notetakingapp.R
 import com.example.notetakingapp.adapter.NoteAdapter
 import com.example.notetakingapp.databinding.FragmentHomeBinding
 import com.example.notetakingapp.viewmodel.NoteViewModel
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 
 
 class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener {
@@ -85,17 +80,17 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
         activity?.let {
             notesViewModel.getAllNotes().observe(
-                viewLifecycleOwner, { note ->
-                    noteAdapter.differ.submitList(note)
-                    updateUI(note)
-                }
-            )
+                viewLifecycleOwner
+            ) { note ->
+                noteAdapter.differ.submitList(note)
+                updateUI(note)
+            }
         }
 
     }
 
-    private fun updateUI(note: List<Note?>) {
-        if (note.isEmpty()) {
+    private fun updateUI(note: List<com.example.notetakingapp.model.Note>?) {
+        if (note!!.isEmpty()) {
             binding.cardView.visibility = View.GONE
             binding.recyclerView.visibility = View.VISIBLE
         } else {
@@ -118,6 +113,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         mMenuSearch.setOnQueryTextListener(this)
 
     }
+
     override fun onQueryTextSubmit(query: String?): Boolean {
 
         searchNote(query)
@@ -126,7 +122,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
     override fun onQueryTextChange(newText: String?): Boolean {
 
-        if (newText != null){
+        if (newText != null) {
             searchNote(newText)
         }
         return true
@@ -136,11 +132,10 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
         val searchQuery = "%$query"
         notesViewModel.searchNote(searchQuery).observe(
-            this,
-            {
-                list -> noteAdapter.differ.submitList(list)
-            }
-        )
+            this
+        ) { list ->
+            noteAdapter.differ.submitList(list)
+        }
     }
 
     override fun onDestroy() {

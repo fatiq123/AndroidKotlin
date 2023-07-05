@@ -1,5 +1,6 @@
 package com.example.notetakingapp.repository
 
+import androidx.lifecycle.LiveData
 import androidx.room.Query
 import com.example.notetakingapp.database.NoteDAO
 import com.example.notetakingapp.database.NoteDatabase
@@ -19,12 +20,12 @@ class NoteRepository(private val db: NoteDatabase) {
         db.getNodeDao().deleteNote(note = note)
     }
 
-    fun getAllNotes() {
-        db.getNodeDao().getAllNotes()
+    fun getAllNotes(): LiveData<List<Note>> {
+        return db.getNodeDao().getAllNotes()
     }
 
-    fun searchNote(query: String?) {
-        db.getNodeDao().searchNote(query = query)
+    fun searchNote(query: String?): LiveData<List<Note>> {
+        return db.getNodeDao().searchNote(query = query)
     }
 
 }

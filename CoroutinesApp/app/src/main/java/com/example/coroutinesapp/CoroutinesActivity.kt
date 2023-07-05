@@ -21,6 +21,11 @@ class CoroutinesActivity : AppCompatActivity() {
         sayHelloFromMainThread()
         sayHelloFromBackgroundThread()
 
+
+        binding.btnGoBack.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun sayHelloFromMainThread() {

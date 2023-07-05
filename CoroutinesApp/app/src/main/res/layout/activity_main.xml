@@ -23,7 +23,7 @@
             android:id="@+id/tvAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="104dp"
+            android:layout_marginTop="72dp"
             android:text="0"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,10 +34,9 @@
             android:id="@+id/btnStartCoroutine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="64dp"
             android:text="Start Coroutine"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAdd" />
 
@@ -48,9 +47,21 @@
             android:text="Start Download"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnStartCoroutine"
-            app:layout_constraintVertical_bias="0.358" />
+            app:layout_constraintTop_toBottomOf="@+id/tvShowMainThread"
+            app:layout_constraintVertical_bias="0.286" />
+
+        <TextView
+            android:id="@+id/tvShowMainThread"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:text="0"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnStartCoroutine" />
 
         <Button
             android:id="@+id/btnNextActivity"

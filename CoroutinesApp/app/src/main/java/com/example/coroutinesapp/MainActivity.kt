@@ -11,6 +11,7 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,10 +48,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun downloadBigFileFromNet() {
+    private suspend fun downloadBigFileFromNet() {
         for (i in 1..100000) {
-            Log.i("Tag", "Downloading $i in ${Thread.currentThread().name}")
+//            Log.i("Tag", "Downloading $i in ${Thread.currentThread().name}")
 
+            withContext(Dispatchers.Main){
+                binding.tvShowMainThread.text = "$i in ${Thread.currentThread().name}"
+            }
         }
     }
 }

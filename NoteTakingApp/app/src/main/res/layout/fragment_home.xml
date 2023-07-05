@@ -7,7 +7,7 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.HomeFragment">
+        tools:context=".HomeFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -62,7 +62,6 @@
                 android:textSize="18sp" />
 
         </androidx.cardview.widget.CardView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

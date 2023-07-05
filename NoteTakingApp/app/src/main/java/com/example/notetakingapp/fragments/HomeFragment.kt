@@ -7,7 +7,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -71,7 +71,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         binding.recyclerView.apply {
             layoutManager = StaggeredGridLayoutManager(
                 2,
-                GridLayoutManager.VERTICAL
+                StaggeredGridLayoutManager.VERTICAL
             )
             setHasFixedSize(true)
             adapter = noteAdapter
@@ -90,12 +90,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     }
 
     private fun updateUI(note: List<com.example.notetakingapp.model.Note>?) {
-        if (note!!.isEmpty()) {
-            binding.cardView.visibility = View.GONE
-            binding.recyclerView.visibility = View.VISIBLE
-        } else {
-            binding.cardView.visibility = View.VISIBLE
-            binding.recyclerView.visibility = View.GONE
+        if (note != null) {
+            if (note.isNotEmpty()) {
+                binding.cardView.visibility = View.GONE
+                binding.recyclerView.visibility = View.VISIBLE
+            } else {
+                binding.cardView.visibility = View.VISIBLE
+                binding.recyclerView.visibility = View.GONE
+            }
         }
     }
 
@@ -108,7 +110,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         inflater.inflate(R.menu.home_menu, menu)
 
         // when user search the record or pass any query in search box
-        val mMenuSearch = menu.findItem(R.id.menu_search).actionView as SearchView
+        val mMenuSearch = menu.findItem(R.id.menu_search).actionView as androidx.appcompat.widget.SearchView
         mMenuSearch.isSubmitButtonEnabled = false
         mMenuSearch.setOnQueryTextListener(this)
 

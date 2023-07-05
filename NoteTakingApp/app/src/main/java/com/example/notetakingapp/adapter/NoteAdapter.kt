@@ -43,7 +43,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     //Overall, using AsyncListDiffer simplifies the process of updating a RecyclerView's data set with
     // diff calculations and automatically dispatching the necessary updates to the adapter.
     // It helps to optimize the UI updates, keep the data in sync, and maintain a smooth user experience.
-    private val differ = AsyncListDiffer(this, differCallBack)
+    val differ = AsyncListDiffer(this, differCallBack)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {

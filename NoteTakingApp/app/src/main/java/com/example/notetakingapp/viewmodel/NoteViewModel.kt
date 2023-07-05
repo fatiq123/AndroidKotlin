@@ -30,7 +30,7 @@ class NoteViewModel(app: Application, private val repository: NoteRepository) :
     }
 
     // because these are normal functions so I should not use coroutine with them
-    fun getAllNotes(note: Note) {
+    fun getAllNotes() {
         repository.getAllNotes()
     }
 

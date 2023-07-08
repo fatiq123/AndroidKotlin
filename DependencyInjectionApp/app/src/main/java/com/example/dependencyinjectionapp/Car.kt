@@ -1,6 +1,8 @@
 package com.example.dependencyinjectionapp
 
-class Car(private val engine: Engine) {
+import javax.inject.Inject
+
+class Car @Inject constructor (private val engine: Engine) {
 //    private val engine = Engine()
 
     fun start() {

@@ -10,8 +10,8 @@ import com.example.movieapp.domain.repository.MovieRepository
 class MovieRepositoryImplementation(
     private val movieRemoteDataSource: MovieRemoteDataSource,
     private val movieLocalDataSource: MovieLocalDataSource,
-    private val movieCacheDataSource: MovieCacheDataSource
-): MovieRepository {
+    private val movieCacheDataSource: MovieCacheDataSource,
+) : MovieRepository {
 
 
     override suspend fun getMovies(): List<Movie>? {
@@ -21,6 +21,11 @@ class MovieRepositoryImplementation(
 
     override suspend fun updateMovies(): List<Movie>? {
         val newListOfMovies = getMoviesFromAPI()
+
+        movieLocalDataSource.clearAll()
+        movieLocalDataSource.saveMoviesToDB(newListOfMovies)
+        movieCacheDataSource.saveMoviesToCache(newListOfMovies)
+        return newListOfMovies
     }
 
 
@@ -40,12 +45,12 @@ class MovieRepositoryImplementation(
     }
 
 
-    suspend fun getMoviesFromROOM(): List<Movie> {
+    private suspend fun getMoviesFromROOM(): List<Movie> {
         lateinit var movieList: List<Movie>
 
         try {
             movieList = movieLocalDataSource.getMoviesFromDB()
-        }catch (exception: Exception) {
+        } catch (exception: Exception) {
 
         }
 
@@ -53,13 +58,27 @@ class MovieRepositoryImplementation(
             return movieList
         } else {
             movieList = getMoviesFromAPI()
-            movieLocalDataSource.saveMoviesToDB(movieList)
+            movieLocalDataSource.saveMoviesToDB(movie = movieList)
         }
         return movieList
 
     }
 
-    private fun getMoviesFromCache(): List<Movie>? {
+    private suspend fun getMoviesFromCache(): List<Movie>? {
+        lateinit var movieList: List<Movie>
 
+        try {
+            movieList = movieCacheDataSource.getMoviesFromCache()
+        } catch (exception: Exception) {
+
+        }
+
+        if (movieList.isNotEmpty()) {
+            return movieList
+        } else {
+            movieList = getMoviesFromROOM()
+            movieCacheDataSource.saveMoviesToCache(movies = movieList)
+        }
+        return movieList
     }
 }

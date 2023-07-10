@@ -22,16 +22,16 @@ class MovieAdapter() : RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
     inner class MyViewHolder(private val binding: ListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(movie: Movie) {
-                binding.titleTextView.text = movie.title
-                binding.descriptionTextView.text = movie.overview
+        fun bind(movie: Movie) {
+            binding.titleTextView.text = movie.title
+            binding.descriptionTextView.text = movie.overview
 
-                val posterURL = "https://image.tmdb.org/t/p/w500/"+movie.poster_path
+            val posterURL = "https://image.tmdb.org/t/p/w500/" + movie.poster_path
 
-                Glide.with(binding.imageView.context)
-                    .load(posterURL)
-                    .into(binding.imageView)
-            }
+            Glide.with(binding.imageView.context)
+                .load(posterURL)
+                .into(binding.imageView)
+        }
     }
 
 

@@ -1,11 +1,13 @@
 package com.example.movieapp.data.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "popular_movies")
 data class Movie(
 
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     val movieId: Int,
 

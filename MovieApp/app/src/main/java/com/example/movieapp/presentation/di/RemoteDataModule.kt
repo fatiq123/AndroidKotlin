@@ -1,5 +1,6 @@
 package com.example.movieapp.presentation.di
 
+import com.example.movieapp.BuildConfig
 import com.example.movieapp.data.api.TMDBService
 import com.example.movieapp.data.datasource.MovieRemoteDataSource
 import com.example.movieapp.data.datasourceimplementation.MovieRemoteDataSourceImplementation
@@ -7,8 +8,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
+import javax.inject.Named
 import javax.inject.Singleton
-@InstallIn(ActivityComponent::class)
+@InstallIn(Singleton::class)
 @Module
 //class RemoteDataModule(private val apiKey: String) {
 //
@@ -23,8 +25,10 @@ import javax.inject.Singleton
 class RemoteDataModule {
 
     @Provides
+    @Singleton
+    @Named(BuildConfig.API_KEY)
     fun provideApiKey(): String {
-        return "your_api_key_here"
+        return BuildConfig.API_KEY
     }
 
     @Singleton

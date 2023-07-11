@@ -20,10 +20,10 @@ import javax.inject.Singleton
 //    RetrofitInstance::class,
 //    UseCaseModule::class
 //])
-
 @InstallIn(SingletonComponent::class)
 interface AppComponent {
 @Binds
+@Singleton // added
     fun movieSubComponentFactory(factory: MovieSubComponent.Factory): MovieSubComponent.Factory
 
 }

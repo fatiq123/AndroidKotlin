@@ -11,7 +11,7 @@ import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import javax.inject.Singleton
 @Module
-@InstallIn(ActivityComponent::class)
+@InstallIn(Singleton::class)
 //@Module(subcomponents = [MovieSubComponent::class])
 //class AppModule(private val context: Context) {
 //

@@ -11,12 +11,12 @@ class ViewModel(
     private val updateMoviesUseCase: UpdateMoviesUseCase,
 ) : ViewModel() {
 
-    private fun getMovies(): LiveData<Any> = liveData {
+    fun getMovies(): LiveData<Any> = liveData {
         val movieList = getMoviesUseCase.execute()
         emit(movieList!!)
     }
 
-    private fun updateMovies(): LiveData<Any> = liveData {
+    fun updateMovies(): LiveData<Any> = liveData {
         val movieList = updateMoviesUseCase.execute()
         emit(movieList!!)
     }

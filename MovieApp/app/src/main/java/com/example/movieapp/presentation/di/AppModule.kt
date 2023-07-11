@@ -10,8 +10,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import javax.inject.Singleton
+@Module
 @InstallIn(ActivityComponent::class)
-@Module(subcomponents = [MovieSubComponent::class])
+//@Module(subcomponents = [MovieSubComponent::class])
 //class AppModule(private val context: Context) {
 //
 //    @Singleton
@@ -21,7 +22,7 @@ import javax.inject.Singleton
 //    }
 //}
 
-class AppModule {
+object AppModule {
 
     @Singleton
     @Provides

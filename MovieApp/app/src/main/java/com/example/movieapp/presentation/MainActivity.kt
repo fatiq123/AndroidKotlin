@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieapp.R
 import com.example.movieapp.databinding.ActivityMainBinding
 import com.example.movieapp.presentation.di.Injector
@@ -26,6 +27,16 @@ class MainActivity : AppCompatActivity() {
         (application as Injector).createMovieSubComponent().inject(this)    // new thing
 
         movieViewModel = ViewModelProvider(this, factory = factory)[ViewModel::class.java]  // I have also done this in previous projects
+
+
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+//        val layoutManger = binding.recyclerView.layout
+        binding.recyclerView.apply {
+
+        }
 
 
     }

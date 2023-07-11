@@ -7,8 +7,10 @@ import com.example.movieapp.data.datasource.MovieRemoteDataSource
 import com.example.movieapp.domain.repository.MovieRepository
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import javax.inject.Singleton
-
+@InstallIn(ActivityComponent::class)
 @Module
 class RepositoryModule() {
 

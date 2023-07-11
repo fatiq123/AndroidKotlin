@@ -5,8 +5,10 @@ import com.example.movieapp.data.datasourceimplementation.MovieLocalDataSourceIm
 import com.example.movieapp.data.db.MovieDao
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import javax.inject.Singleton
-
+@InstallIn(ActivityComponent::class)
 @Module
 class LocalDataModule {
 

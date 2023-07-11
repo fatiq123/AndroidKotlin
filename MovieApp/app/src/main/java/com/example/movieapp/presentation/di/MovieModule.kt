@@ -5,7 +5,10 @@ import com.example.movieapp.domain.usecases.UpdateMoviesUseCase
 import com.example.movieapp.presentation.ViewModelFactory
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 
+@InstallIn(ActivityComponent::class)
 @Module
 class MovieModule {
 

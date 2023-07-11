@@ -7,26 +7,26 @@ import com.example.movieapp.data.datasource.MovieRemoteDataSource
 import com.example.movieapp.domain.repository.MovieRepository
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import javax.inject.Singleton
-@InstallIn(Singleton::class)
+
 @Module
-class RepositoryModule() {
+class RepositoryModule {
 
     @Singleton
     @Provides
     fun provideMovieRepository(
-        movieCacheDataSource: MovieCacheDataSource,
+        movieRemoteDataSource: MovieRemoteDataSource,
         movieLocalDataSource: MovieLocalDataSource,
-        movieRemoteDataSource: MovieRemoteDataSource
+        movieCacheDataSource: MovieCacheDataSource
+
     ): MovieRepository {
 
         return MovieRepositoryImplementation(
-            movieCacheDataSource = movieCacheDataSource,
-            movieLocalDataSource = movieLocalDataSource,
-            movieRemoteDataSource = movieRemoteDataSource
+            movieRemoteDataSource,
+            movieLocalDataSource,
+            movieCacheDataSource
         )
+
     }
 
 }

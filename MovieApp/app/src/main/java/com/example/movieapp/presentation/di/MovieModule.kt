@@ -3,25 +3,22 @@ package com.example.movieapp.presentation.di
 import com.example.movieapp.domain.usecases.GetMoviesUseCase
 import com.example.movieapp.domain.usecases.UpdateMoviesUseCase
 import com.example.movieapp.presentation.ViewModelFactory
+import com.example.movieapp.presentation.di.MovieScope
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import javax.inject.Singleton
 
-@InstallIn(Singleton::class)
 @Module
 class MovieModule {
-
     @MovieScope
     @Provides
     fun provideMovieViewModelFactory(
         getMoviesUseCase: GetMoviesUseCase,
-        updateMoviesUseCase: UpdateMoviesUseCase,
+        updateMoviesUseCase: UpdateMoviesUseCase
     ): ViewModelFactory {
+
         return ViewModelFactory(
-            getMoviesUseCase = getMoviesUseCase,
-            updateMoviesUseCase = updateMoviesUseCase
+            getMoviesUseCase,
+            updateMoviesUseCase
         )
     }
 }

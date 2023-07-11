@@ -15,10 +15,8 @@ import com.example.movieapp.R
 import com.example.movieapp.data.model.Movie
 import com.example.movieapp.databinding.ActivityMainBinding
 import com.example.movieapp.presentation.di.Injector
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     @Inject

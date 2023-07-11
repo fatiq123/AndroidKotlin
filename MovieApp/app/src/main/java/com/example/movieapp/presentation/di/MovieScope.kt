@@ -1,11 +1,8 @@
 package com.example.movieapp.presentation.di
 
-import javax.inject.Qualifier
 import javax.inject.Scope
 
 @Scope
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-annotation class MovieScope
-
-
-
+annotation class MovieScope {
+}

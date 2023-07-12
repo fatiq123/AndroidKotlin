@@ -1,11 +1,12 @@
 package com.example.quizapp.retrofit
 
-import com.example.quizapp.model.QuestionsListItem
+import com.example.quizapp.model.Question
+import com.example.quizapp.model.QuestionsList
 import retrofit2.Response
 import retrofit2.http.GET
 
 interface QuestionsApi {
 
     @GET("questionsapi.php")
-    suspend fun getQuestions(): Response<QuestionsListItem>
+    suspend fun getQuestions(): Response<QuestionsList>
 }

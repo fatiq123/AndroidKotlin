@@ -53,4 +53,7 @@ dependencies {
     // Add the dependency for the Realtime Database library
     implementation("com.google.firebase:firebase-database-ktx")
 
+    // Declare the dependency for the Cloud Firestore library
+    implementation("com.google.firebase:firebase-firestore-ktx")
+
 }

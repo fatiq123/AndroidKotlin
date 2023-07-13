@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.journalapp.adapter.JournalAdapter
@@ -32,7 +34,7 @@ class JournalList : AppCompatActivity() {
 
     private lateinit var storageReference: StorageReference     // Storage
 
-    private lateinit var journalList: List<Journal>         // List of Journal
+    private lateinit var journalList: MutableList<Journal>         // List of Journal
     private lateinit var adapter: JournalAdapter
 
     private var collectionReference: CollectionReference =
@@ -82,4 +84,42 @@ class JournalList : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    // Getting all posts
+    override fun onStart() {
+        super.onStart()
+
+
+        collectionReference.whereEqualTo("userId", JournalUser.instance?.userId)
+            .get()
+            .addOnSuccessListener { it ->
+                if (!it.isEmpty) {
+                    it.forEach {
+
+                        // convert snapshots to journal objects
+                        val journal = it.toObject(Journal::class.java)
+
+                        journalList.add(journal)
+                    }
+
+                    // RecyclerView
+                    adapter = JournalAdapter(
+                        this,
+                        journalList = journalList
+                    )
+
+                    binding.recyclerView.adapter = adapter
+                    adapter.notifyDataSetChanged()
+                } else {
+                    noPostTextView.visibility = View.VISIBLE
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(
+                    this,
+                    "OOPs, Something went wrong",
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
+    }
 }

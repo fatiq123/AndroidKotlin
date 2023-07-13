@@ -1,14 +1,17 @@
 package com.example.journalapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.journalapp.adapter.JournalAdapter
 import com.example.journalapp.databinding.ActivityJournalListBinding
 import com.example.journalapp.model.Journal
+import com.example.journalapp.view.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -32,7 +35,8 @@ class JournalList : AppCompatActivity() {
     private lateinit var journalList: List<Journal>         // List of Journal
     private lateinit var adapter: JournalAdapter
 
-    private var collectionReference: CollectionReference = db.collection("Journal") // Firestore Collection
+    private var collectionReference: CollectionReference =
+        db.collection("Journal") // Firestore Collection
 
     private lateinit var noPostTextView: TextView       // for textView to show how much posts
 
@@ -55,13 +59,27 @@ class JournalList : AppCompatActivity() {
         val storage = Firebase.storage("gs://journalapp-e1e05.appspot.com")
 
 
-
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.add -> if (firebaseAuth != null && firebaseUser != null) {
+                val intent = Intent(this, AddJournalActivity::class.java)
+                startActivity(intent)
+            }
+
+            R.id.sign_out -> if (firebaseAuth != null && firebaseUser != null) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }

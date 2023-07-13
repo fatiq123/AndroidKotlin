@@ -26,11 +26,11 @@ class JournalAdapter(private val context: Context, var journalList: List<Journal
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return journalList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
+
     }
 
 

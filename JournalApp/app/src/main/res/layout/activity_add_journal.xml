@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/gradient_add_journal"
-        tools:context=".AddJournalActivity">
+        tools:context=".view.AddJournalActivity">
 
 
         <ImageView
@@ -18,8 +18,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/post_imageView"
-            />
+            android:id="@+id/post_imageView" />
 
         <TextView
             android:layout_width="wrap_content"

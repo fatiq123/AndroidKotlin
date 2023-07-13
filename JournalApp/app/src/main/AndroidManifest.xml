@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".JournalUser"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,7 +14,7 @@
         android:theme="@style/Theme.JournalApp"
         tools:targetApi="31">
         <activity
-            android:name=".AddJournalActivity"
+            android:name=".view.AddJournalActivity"
             android:exported="false" />
         <activity
             android:name=".JournalList"
@@ -22,7 +23,7 @@
             android:name=".view.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

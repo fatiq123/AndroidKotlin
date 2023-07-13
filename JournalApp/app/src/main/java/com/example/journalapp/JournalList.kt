@@ -13,7 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.journalapp.adapter.JournalAdapter
 import com.example.journalapp.databinding.ActivityJournalListBinding
 import com.example.journalapp.model.Journal
-import com.example.journalapp.view.MainActivity
+import com.example.journalapp.view.AddJournalActivity
+import com.example.journalapp.view.SignInActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -77,7 +78,7 @@ class JournalList : AppCompatActivity() {
             }
 
             R.id.sign_out -> if (firebaseAuth != null && firebaseUser != null) {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, SignInActivity::class.java)
                 startActivity(intent)
             }
         }

@@ -15,6 +15,7 @@ import com.example.journalapp.databinding.ActivityJournalListBinding
 import com.example.journalapp.model.Journal
 import com.example.journalapp.view.AddJournalActivity
 import com.example.journalapp.view.SignInActivity
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -90,17 +91,27 @@ class JournalList : AppCompatActivity() {
         super.onStart()
 
 
-        collectionReference.whereEqualTo("userId", JournalUser.instance?.userId)
+        collectionReference.whereEqualTo("userId", firebaseUser.uid)
             .get()
             .addOnSuccessListener { it ->
                 if (!it.isEmpty) {
-                    it.forEach {
 
-                        // convert snapshots to journal objects
-                        val journal = it.toObject(Journal::class.java)
+                    // simple we just adding these things to collection
+                    for (document in it) {
+                        val journal = Journal(
+                            document.data["title"].toString(),
+                            document.data["thoughts"].toString(),
+                            document.data["imageUrl"].toString(),
+                            document.data["userId"].toString(),
+                            document.data["timeAdded"] as Timestamp,
+                            document.data["username"].toString(),
+
+                        )
 
                         journalList.add(journal)
                     }
+
+
 
                     // RecyclerView
                     adapter = JournalAdapter(

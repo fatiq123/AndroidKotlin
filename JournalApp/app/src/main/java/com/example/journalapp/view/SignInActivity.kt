@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.journalapp.JournalList
+import com.example.journalapp.JournalUser
 import com.example.journalapp.R
 import com.example.journalapp.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -51,6 +52,13 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
 
                 if (task.isSuccessful) {
+
+
+                    val journal: JournalUser = JournalUser.instance!!
+                    journal.userId = auth.currentUser?.uid
+                    journal.username = auth.currentUser?.displayName
+
+
                     gotoJournalList()
                 } else {
                     Toast.makeText(

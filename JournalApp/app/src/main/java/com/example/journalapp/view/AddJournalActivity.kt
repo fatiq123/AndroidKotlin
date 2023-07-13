@@ -15,8 +15,10 @@ import com.example.journalapp.model.Journal
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.Date
@@ -53,7 +55,7 @@ class AddJournalActivity : AppCompatActivity() {
         storageReference = FirebaseStorage.getInstance().reference
 
         // initialize Auth
-        auth = FirebaseAuth.getInstance()
+        auth = Firebase.auth
 
 
 
@@ -61,8 +63,11 @@ class AddJournalActivity : AppCompatActivity() {
             postProgressBar.visibility = View.INVISIBLE
 
             if (JournalUser.instance != null) {
-                currentUserId = JournalUser.instance!!.userId.toString()
-                currentUserName = JournalUser.instance!!.username.toString()
+//                currentUserId = JournalUser.instance!!.userId.toString()
+//                currentUserName = JournalUser.instance!!.username.toString()
+
+                currentUserId = auth.currentUser?.uid.toString()
+                currentUserName = auth.currentUser?.displayName.toString()
 
                 postUsernameTextview.text = currentUserName
             }

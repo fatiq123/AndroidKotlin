@@ -1,4 +1,4 @@
-package com.example.journalapp.Adapter
+package com.example.journalapp.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

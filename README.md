@@ -3,6 +3,7 @@
 # XML
 # Activities
 # Fragments
+# ViewPager2
 # BottomNavigation
 # SibebarNavigationDrawer
 # DataBinding

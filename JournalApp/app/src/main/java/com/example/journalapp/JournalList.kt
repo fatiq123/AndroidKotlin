@@ -23,7 +23,7 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
+
 
 class JournalList : AppCompatActivity() {
 
@@ -60,7 +60,6 @@ class JournalList : AppCompatActivity() {
         // Posts ArrayList
         journalList = arrayListOf<Journal>()
 
-        val storage = Firebase.storage("gs://journalapp-e1e05.appspot.com")
 
 
     }
@@ -93,7 +92,7 @@ class JournalList : AppCompatActivity() {
 
         collectionReference.whereEqualTo("userId", firebaseUser.uid)
             .get()
-            .addOnSuccessListener { it ->
+            .addOnSuccessListener {
                 if (!it.isEmpty) {
 
                     // simple we just adding these things to collection

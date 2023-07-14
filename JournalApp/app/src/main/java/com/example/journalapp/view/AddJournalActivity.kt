@@ -157,7 +157,4 @@ class AddJournalActivity : AppCompatActivity() {
         user = auth.currentUser!!
     }
 
-    override fun onStop() {
-        super.onStop()
-    }
 }

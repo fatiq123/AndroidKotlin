@@ -46,23 +46,24 @@ class MainActivity : AppCompatActivity() {
 
         // displaying the first question
         GlobalScope.launch(Dispatchers.Main) {
-            quizViewModel.getQuestionsFromLiveData().observe(this@MainActivity, Observer {
+            quizViewModel.getQuestionsFromLiveData().observe(this@MainActivity,
+                androidx.lifecycle.Observer {
 
-                if (it.isNotEmpty()) {
-                    questionsList = it
-                    Log.v("Tag", "This is 1st question: ${questionsList[0]}")
-                }
+                    if (it.isNotEmpty()) {
+                        questionsList = it
+                        Log.v("Tag", "This is 1st question: ${questionsList[0]}")
+                    }
 
-                binding.apply {
-                    tvQuestion.text = questionsList[0].question
-                    radio1.text = questionsList[0].option1
-                    radio2.text = questionsList[0].option2
-                    radio3.text = questionsList[0].option3
-                    radio4.text = questionsList[0].option4
+                    binding.apply {
+                        tvQuestion.text = questionsList[0].question
+                        radio1.text = questionsList[0].option1
+                        radio2.text = questionsList[0].option2
+                        radio3.text = questionsList[0].option3
+                        radio4.text = questionsList[0].option4
 
-                }
+                    }
 
-            })
+                })
         }
 
 

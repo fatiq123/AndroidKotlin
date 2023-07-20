@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         // displaying the first question
         GlobalScope.launch(Dispatchers.Main) {
             quizViewModel.getQuestionsFromLiveData().observe(this@MainActivity,
-                androidx.lifecycle.Observer {
+                    Observer {
 
                     if (it.isNotEmpty()) {
                         questionsList = it
